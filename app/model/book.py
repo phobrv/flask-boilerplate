@@ -8,7 +8,7 @@ class Book(db.Model):
     created_at = db.Column(db.String(50), nullable=True)
     update_at = db.Column(db.String(50), nullable=True)
     name = db.Column(db.String(100), nullable=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     user = db.relationship("User", back_populates="books", lazy="subquery")
 
     def __init__(self):

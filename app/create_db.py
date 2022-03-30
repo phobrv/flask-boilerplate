@@ -1,4 +1,4 @@
 from model import db
-from app import app
-with app.app_context():
+from app import server
+with server.app_context():
     db.create_all()

@@ -12,7 +12,7 @@ class User(db.Model):
     update_at = db.Column(db.String(50), nullable=True)
     user_name = db.Column(db.String(200), nullable=True)
     password = db.Column(db.String(100), nullable=True)  # hashed
-    books = db.relationship("Book", backref="users",  lazy="subquery")
+    books = db.relationship("Book", backref="users",  cascade="all, delete", passive_deletes=True, lazy="subquery")
 
     def __init__(self):
         self.created_at = str(datetime.now())
